@@ -16,7 +16,7 @@ GLIBC도 2.14이상이 필요한데 cecntos6의 GLIBC버전은 2.12다.
 GLIBC 올리기가 조금 어려워보여(GLIBC에 의존하는 것들이 매우 많음) OS를 centos7로 다시 설치하였다.
 
 
-### 의존성 설치
+### 기본 의존성 설치
 필요한 의존성.
 
 바로 설치때리지말고 밑에 읽고 하자.
@@ -38,3 +38,16 @@ nasm을 install하려고보니 yum에 등록된 nasm버전이 낮아서 nasm yum
 
 /etc/yum.repos.d 디렉토리에 vi로 nasm.repo 파일을 만들고
 http://www.nasm.us/nasm.repo 사이트에 있는 내용을 그대로 입력해주고 저장하면 된다.
+
+### yasm 설치
+x264는 yasm에 의존성이 있어서 설치해주어야 한다.
+```bash
+git clone --depth 1 git://github.com/yasm/yasm.git
+cd yasm
+./autogen.sh
+./configure --prefix="/home/myuser/apps/ffmpeg" --bindir="/home/myuser/apps/ffmpeg/bin"
+make
+make install
+```
+
+
