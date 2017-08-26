@@ -50,4 +50,5 @@ make
 make install
 ```
 
+### x264 설치
 
