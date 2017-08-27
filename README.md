@@ -82,7 +82,13 @@ cd lame-3.99.5
 
 나같은 경우에는 동영상에 텍스트를 그리기 위해 설치하는게 목적이라 drawtext라는 기능을 쓰기 위해 --enable-libfreetype --enable-libfontconfig 옵션을 켜주었다.
 ```bash
+git clone --depth 1 git://source.ffmpeg.org/ffmpeg
+cd ffmpeg
+
 ./configure --prefix="/home/myuser/apps/ffmpeg" --enable-shared --enable-gpl --enable-version3 --enable-nonfree --extra-cflags="-I/home/myuser/apps/ffmpeg/include" --extra-ldflags="-L/home/myuser/apps/ffmpeg/lib" --extra-libs=-ldl --enable-avfilter --enable-libx264 --enable-libfdk_aac --enable-libmp3lame --enable-libfreetype --enable-libfontconfig
+
+make
+make install
 ```
 
 ### bashrc에 변수 export 및 path에 추가
@@ -95,4 +101,9 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${FFMPEG_PREFIX}/lib
 export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${FFMPEG_PREFIX}/lib/pkgconfig
 
 export PATH=${FFMPEG_BIN_PREFIX}:$PATH
+```
+
+## 사용
+```bash
+#ffmpeg -i 인풋파일경로 -c:v 비디오코덱명시 -c:a 오디오코덱명시 아웃풋파일경로
 ```
