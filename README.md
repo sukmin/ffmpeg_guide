@@ -51,4 +51,36 @@ make install
 ```
 
 ### x264 설치
+```bash
+git clone --depth 1 git://git.videolan.org/x264
+cd x264
+./configure --prefix="/home/myuser/apps/ffmpeg" --bindir="/home/myuser/apps/ffmpeg/bin" --enable-shared
+make
+make install
+```
 
+### fdk_acc 설치
+```bash
+git clone --depth 1 git://git.code.sf.net/p/opencore-amr/fdk-aac
+cd fdk-aac
+./autogen.sh
+./configure --prefix="/home/myuser/apps/ffmpeg" --enable-shared
+make
+make install
+```
+
+### LAME 설치
+```bash
+curl -L -O http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz
+tar -xvzf lame-3.99.5.tar.gz
+cd lame-3.99.5
+./configure --prefix="/home/myuser/apps/ffmpeg" --enable-shared
+```
+
+### FFMPEG 설치
+매우 많은 옵션들이 있는데 필요한 기능이 있다면 명시해주어야 한다.
+
+나같은 경우에는 동영상에 텍스트를 그리기 위해 설치하는게 목적이라 drawtext라는 기능을 쓰기 위해 --enable-libfreetype --enable-libfontconfig 옵션을 켜주었다.
+```bash
+./configure --prefix="/home/myuser/apps/ffmpeg" --enable-shared --enable-gpl --enable-version3 --enable-nonfree --extra-cflags="-I/home/myuser/apps/ffmpeg/include" --extra-ldflags="-L/home/myuser/apps/ffmpeg/lib" --extra-libs=-ldl --enable-avfilter --enable-libx264 --enable-libfdk_aac --enable-libmp3lame --enable-libfreetype --enable-libfontconfig
+```
