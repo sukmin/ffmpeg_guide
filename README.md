@@ -84,3 +84,15 @@ cd lame-3.99.5
 ```bash
 ./configure --prefix="/home/myuser/apps/ffmpeg" --enable-shared --enable-gpl --enable-version3 --enable-nonfree --extra-cflags="-I/home/myuser/apps/ffmpeg/include" --extra-ldflags="-L/home/myuser/apps/ffmpeg/lib" --extra-libs=-ldl --enable-avfilter --enable-libx264 --enable-libfdk_aac --enable-libmp3lame --enable-libfreetype --enable-libfontconfig
 ```
+
+### bashrc에 변수 export 및 path에 추가
+사용할 계정 .bashrc에 아래처럼 변수 export 및 path를 잡자
+```bash
+export APP_HOME=/home/myuser
+export FFMPEG_PREFIX=${APP_HOME}/apps/ffmpeg
+export FFMPEG_BIN_PREFIX=${FFMPEG_PREFIX}/bin
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${FFMPEG_PREFIX}/lib
+export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${FFMPEG_PREFIX}/lib/pkgconfig
+
+export PATH=${FFMPEG_BIN_PREFIX}:$PATH
+```
